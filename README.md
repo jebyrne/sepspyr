@@ -3,7 +3,7 @@ Overview
 
 SEPSPYR is a matlab toolbox for building and reconstructing separable quadrature steerable pyramids.
 
-This toolbox provides the following package methods
+This toolbox provides the following methods
 
 * sepspyr.filter: 9 and 13 tap inphase and quadrature separable filters
 * sepspyr.build: decompose and image into a separable steerable pyramid for a given number of orientations and scales
@@ -16,9 +16,10 @@ This toolbox provides the following package methods
 
 Summary 
 -------
-Project: SEPSPYR - A separable steerable pyramid toolbox for Matlab
+Project: SEPSPYR - A separable steerable pyramid toolbox for Matlab  
 Author: Jeffrey Byrne <jebyrne@gmail.com>  
 URL: https://github.com/jebyrne/sepspyr/  
+
 
 
 Related
