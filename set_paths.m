@@ -32,7 +32,7 @@ end
 
 
 %% Compiling
-if ~(exist('corrDn') == 3)
+if ~(exist('upConv') == 3)
   origdir = pwd;
   cd(fullfile(origdir,'deps','matlabPyrTools-1.3','matlabPyrTools-1.3'));
   eval('compile_mex');
