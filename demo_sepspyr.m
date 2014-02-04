@@ -195,6 +195,14 @@ end
 fprintf('[%s]: press any key to continue\n', mfilename); pause;
 
 
+%% Separable quadrature steerable pyramid (convenience function)
+fprintf('[%s]: separable quadrature steerable pyramid decomposition\n', mfilename); 
+fprintf('[%s]: This is the function you should use in your code!\n', mfilename); 
+spyr = sepspyr.decompose(img);
+sepspyr.show.decomposition(spyr, figure(51));
+fprintf('[%s]: press any key to continue\n', mfilename); pause;
+
+
 %% Reconstruction
 fprintf('[%s]: reconstruction compared to Simoncelli''s steerable pyramid toolbox \n', mfilename); 
 if ~(exist('corrDn') == 3)

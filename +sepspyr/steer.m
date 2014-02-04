@@ -9,18 +9,18 @@ function [b] = steer(spyr,r,k_level)
 
 
 %% Steering coefficients
-if isreal(spyr.b)
+if isreal(spyr.bands)
   kappa = spyr.steer(r);  % steering coefficients
 else
-  kappa = complex([spyr.steer.inphase(r) 0], spyr.steer.quadrature(r));  % steering coefficients
+  kappa = complex([spyr.filters.steer.inphase(r) 0], spyr.filters.steer.quadrature(r));  % steering coefficients
 end
 
 
 %% Steer!
-n_basis = size(spyr.b,2);
+n_basis = size(spyr.bands,2);
 for k=k_level
-  b{k} = zeros(size(spyr.b{k,1}));
+  b{k} = zeros(size(spyr.bands{k,1}));
   for j=1:n_basis
-    b{k} = b{k} + complex(real(kappa(j)).*real(spyr.b{k,j}),imag(kappa(j)).*imag(spyr.b{k,j}));
+    b{k} = b{k} + complex(real(kappa(j)).*real(spyr.bands{k,j}),imag(kappa(j)).*imag(spyr.bands{k,j}));
   end
 end
