@@ -164,7 +164,7 @@ fprintf('[%s]: press any key to continue\n', mfilename); pause;
 fprintf('[%s]: building 13-tap 5-level separable steerable pyramid\n', mfilename); 
 figure(30); imagesc(img); colormap(gray); axis image; title('sepspyr input image');
 spyr = sepspyr.build(img,'13-tap-inphase',6);
-sepspyr.show(spyr, figure(31));
+sepspyr.show.bands(spyr, figure(31));
 fprintf('[%s]: press any key to continue\n', mfilename); pause;
 
 
