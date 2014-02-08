@@ -9,6 +9,17 @@ function [spyr] = decompose(im, n_levels, n_orientations, spyr_filtertype, spyr_
 
 
 %% Inputs
+if ~exist('im', 'var') || isempty(im)
+  im = 'cameraman.tif';
+end
+if ~isnumeric(im) && exist(im,'file') 
+  im = imread(im);
+  if ndims(im) == 3
+    im = mat2gray(rgb2gray(im));
+  else
+    im = mat2gray(im);
+  end
+end
 if ~exist('spyr_filtertype', 'var') || isempty(spyr_filtertype)
   spyr_filtertype = '9iq';
 end
