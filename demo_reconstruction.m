@@ -51,8 +51,8 @@ subplot(1,3,2); imagesc(img_spyr,[0 1]); colormap(gray); axis image; title('SPyr
 subplot(1,3,3); imagesc(img_sepspyr,[0 1]); colormap(gray); axis image; title('SepSpyramid Reconstruction');
 
 fprintf('[%s]: Simoncelli''s steerable pyramid toolbox - reconstruction statistics \n', mfilename);
-imStats(img,img_spyr);  % pyrtools
+imStats(img, img_spyr);  % pyrtools
 fprintf('[%s]: sepspyr reconstruction statistics \n', mfilename);
-imStats(img,img_sepspyr);  % pyrtools
+imStats(img, imresize(img_sepspyr,size(img)));  % FIXME: boundary problems introduces size errors
 
 

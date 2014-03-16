@@ -24,7 +24,7 @@ for k=spyr.n_levels:-1:1
   for j=1:spyr.n_basis
     b = sepspyr.util.padarray(real(spyr.bands{k,j}), [floor(m_basis/2) floor(m_basis/2)], spyr.filters.boundary, 'both');
     b = (1/16)*conv2((f(:,f_order(j,2))), (f(:,f_order(j,1))), b, 'valid');
-    imup = imresize(imup, size(b), 'bicubic') + b;      
+    imup = imresize(b, size(imup), 'bicubic') + imup; % why off by one?
   end
   
   % Recursion
