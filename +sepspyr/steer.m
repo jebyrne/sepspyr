@@ -9,8 +9,8 @@ function [b] = steer(spyr,r,k_level)
 
 
 %% Steering coefficients
-if isreal(spyr.bands)
-  kappa = spyr.steer(r);  % steering coefficients
+if isreal(spyr.bands{1})
+  kappa = spyr.filters.steer(r);  % steering coefficients
 else
   kappa = complex([spyr.filters.steer.inphase(r) 0], spyr.filters.steer.quadrature(r));  % steering coefficients
 end

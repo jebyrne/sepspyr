@@ -30,7 +30,7 @@ if ~exist('n_orientations', 'var') || isempty(n_orientations)
   n_orientations = 8;  
 end
 if ~exist('n_levels', 'var') || isempty(n_levels)
-  n_levels = log2(min(size(im)))-2;
+  n_levels = floor(log2(min(size(im))))-2;
 end
 
 
