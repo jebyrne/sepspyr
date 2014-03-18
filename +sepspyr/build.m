@@ -21,7 +21,6 @@ if ~exist('str_boundary','var') || isempty(str_boundary)
   str_boundary = 'symmetric';
 end
 
-
 %% Recursive pyramid decomposition
 for k=1:n_scales  
   % Boundary handling
@@ -40,7 +39,7 @@ for k=1:n_scales
   % Lowpass and downsample
   imgpad = sepspyr.util.padarray(img, [floor(m_lowpass/2) floor(m_lowpass/2)],str_boundary,'both');  
   img = conv2(lo,lo,imgpad,'valid'); 
-  img = img(1:2:end,1:2:end);    
+  img = img(1:2:end,1:2:end);      
 end
 
 

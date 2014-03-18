@@ -15,7 +15,7 @@ f = real(spyr.filters.f);
 
 for k=spyr.n_levels:-1:1
   % Upsample and smooth
-  imup = zeros(2*size(img));
+  imup = zeros(size(spyr.bands{k,1}));
   imup(1:2:end,1:2:end) = 4*img; 
   imup = sepspyr.util.padarray(imup, [floor(m_lowpass/2) floor(m_lowpass/2)], spyr.filters.boundary, 'both');
   imup = conv2(spyr.filters.lo, spyr.filters.lo, imup, 'valid');
@@ -23,10 +23,13 @@ for k=spyr.n_levels:-1:1
   % Bandpass
   for j=1:spyr.n_basis
     b = sepspyr.util.padarray(real(spyr.bands{k,j}), [floor(m_basis/2) floor(m_basis/2)], spyr.filters.boundary, 'both');
-    b = (1/16)*conv2((f(:,f_order(j,2))), (f(:,f_order(j,1))), b, 'valid');
-    imup = imresize(b, size(imup), 'bicubic') + imup; % why off by one?
+    b = (1/16)*conv2((f(:,f_order(j,2))), (f(:,f_order(j,1))), b, 'valid');    
+    imup = b + imup; 
   end
   
   % Recursion
   img = imup;
 end
+
+%% Truncate
+img = max(min(img,1),0);

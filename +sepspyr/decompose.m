@@ -24,7 +24,7 @@ if ~exist('spyr_filtertype', 'var') || isempty(spyr_filtertype)
   spyr_filtertype = '9iq';
 end
 if ~exist('spyr_boundary', 'var') || isempty(spyr_boundary)
-  spyr_boundary = 'symmetric';
+  spyr_boundary = 'reflect1';
 end
 if ~exist('n_orientations', 'var') || isempty(n_orientations)
   n_orientations = 8;  
