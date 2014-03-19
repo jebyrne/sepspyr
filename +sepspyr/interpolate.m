@@ -16,7 +16,7 @@ for i=1:spyr.n_levels
     for k=i:-1:1
       if k > 1
         % Upsample and smooth
-        imup = zeros(2*size(im));
+        imup = zeros(size(spyr.decomposition{k-1,j}));        
         imup(1:2:end,1:2:end) = 4*im;
         imup = sepspyr.util.padarray(imup, [floor(m_lowpass/2) floor(m_lowpass/2)], spyr.filters.boundary, 'both');
         imup = conv2(spyr.filters.lo, spyr.filters.lo, imup, 'valid');
