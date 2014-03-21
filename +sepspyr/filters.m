@@ -23,9 +23,9 @@ switch(n_tap)
     % In-phase: Appendix H, table 4
     g1 = [0.0094 0.1148 0.3964 -0.0601 -0.9213 -0.0601 0.3964 0.1148 0.0094];  % even symmetry
     g2 = [0.0008 0.0176 0.1660 0.6383 1.0000 0.6383 0.1660 0.0176 0.0008]; % even symmetry
-    g3 = [-0.0028 -0.0480 -0.3020 -0.5806 0 0.5806 0.3020 0.0480 0.0028];  % odd symmetry
+    g3 = [-0.0028 -0.0480 -0.3020 -0.5806 0 0.5806 0.3020 0.0480 0.0028];  % odd symmetry about zero
     f = single([g1' g2' g3']);
-    f_convorder = [1 2; 3 3; 2 1];
+    f_convorder = [1 2; 3 3; 2 1];    
 
     % Steering coefficients (kappa)
     steer = @(r) [cos(r).^2 -2*cos(r)*sin(r) sin(r).^2]; % anonymous function, radians
@@ -40,7 +40,7 @@ switch(n_tap)
     h3 = [-0.0020 -0.0354 -0.2225 -0.4277 0 0.4277 0.2225 0.0354 0.0020];  % odd symmetry
     h4 = [0.0048 0.0566 0.1695 -0.1889 -0.7349 -0.1889 0.1695 0.0566 0.0048];  % even symmetry
     f = single([h1' h2' h3' h4']);
-    f_convorder = [1 2; 4 3; 3 4; 2 1]; 
+    f_convorder = [1 2; 4 3; 3 4; 2 1]; % x then y (not i then j)
     
     % Steering coefficients (kappa)
     steer = @(r) [cos(r).^3 -3*(cos(r).^2).*sin(r) 3*(cos(r)).*(sin(r).^2) -sin(r).^3]; % anonymous function, radians
@@ -85,13 +85,13 @@ switch(n_tap)
     [g,lo,g_convorder,steer.inphase] = sepspyr.filters('9i');
     [h,lo,h_convorder,steer.quadrature] = sepspyr.filters('9q');
     f = complex([g zeros(9,1)], h);
-    f_convorder = complex([g_convorder; 1 1], h_convorder);      
-    
+    f_convorder = complex([g_convorder; 4 4], h_convorder);  %% TESTING? 1 1 -> 4 4
+  
   case {'13iq','13-tap-inphase-quadrature','13-inphase-quadrature'}
     [g,lo,g_convorder,steer.inphase] = sepspyr.filters('13i');
     [h,lo,h_convorder,steer.quadrature] = sepspyr.filters('13q');
     f = complex([g zeros(13,1)], h);
-    f_convorder = complex([g_convorder; 1 1], h_convorder);      
+    f_convorder = complex([g_convorder; 1 1], h_convorder);    % 1 1?  
     
   otherwise
     error('unsupported filter type ''%s''', n_tap);

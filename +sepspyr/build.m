@@ -29,10 +29,10 @@ for k=1:n_scales
   % Bandpass
   for j=1:n_basis
     if isreal(f)
-      spyr.bands{k,j} = conv2(f(:,f_order(j,1)),f(:,f_order(j,2)),imgpad','valid')';
+      spyr.bands{k,j} = conv2(f(:,f_order(j,1)),f(:,f_order(j,2)),imgpad,'valid');
     else
-      spyr.bands{k,j} = complex(conv2(real(f(:,real(f_order(j,1)))),real(f(:,real(f_order(j,2)))),imgpad','valid')', ...
-        conv2(imag(f(:,imag(f_order(j,1)))),imag(f(:,imag(f_order(j,2)))),imgpad','valid')');
+      spyr.bands{k,j} = complex(conv2((real(f(:,real(f_order(j,1))))),real(f(:,real(f_order(j,2)))),imgpad','valid')', ...
+        conv2((imag(f(:,imag(f_order(j,1))))),imag(f(:,imag(f_order(j,2)))),imgpad','valid')');  % conv2: column then row
     end
   end
   

@@ -23,7 +23,8 @@ for t=0:1/32:10
   mpyr.filters.f = cos(t*th).*real(pyr.filters.f) + sin(t*th).*imag(pyr.filters.f);
   for i=1:pyr.n_levels
     for j=1:pyr.n_basis
-      mpyr.bands{i,j} = cos(t*th).*real(pyr.bands{i,j}) + sin(t*th).*imag(pyr.bands{i,j});  
+      mpyr.bands{i,j} = cos(t*th).*real(pyr.bands{i,j}) + sin(t*th).*imag(pyr.bands{i,j});        
+      %mpyr.bands{i,j} = complex(cos(t*th).*real(pyr.bands{i,j}), sin(t*th).*imag(pyr.bands{i,j}));        
       %mpyr.bands{i,j} = complex(cos(t*th).*real(pyr.bands{i,j}) + sin(t*th).*imag(pyr.bands{i,j}), cos(t*(th+pi/2)).*real(pyr.bands{i,j}) + sin(t*(th+pi/2)).*imag(pyr.bands{i,j}));
     end
   end
