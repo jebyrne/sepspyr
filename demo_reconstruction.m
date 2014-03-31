@@ -41,6 +41,8 @@ if ~exist('corrDn', 'file')
 end
 
 spyr = sepspyr.decompose(img, 4, 8, '9iq', 'reflect1');
+
+spyr = sepspyr.full(spyr);
 img_sepspyr = double(sepspyr.reconstruct(spyr));
 
 [pyr,pind] = buildSpyr(img, 4, 'sp3Filters','reflect1');  
